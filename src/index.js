@@ -6,10 +6,96 @@ const fs = require ('fs');
 //must run 'npm install --save create-html'
 const createHTML = require('create-html');
 
+let managerArr = [];
 let engineerArr = [];
 let internArr = [];
 
-addTeamMember();
+addManager();
+
+function addManager ()
+{
+
+    inquirer
+    .prompt([
+        {
+            type: 'input',
+            name: 'fName',
+            message: 'Enter managers first name:',
+            validate: fName => 
+            {
+                if ((fName.length === 0) && (fName === "NaN"))
+                {
+                    return 'You must enter a valid first name.';
+                }
+                return true;
+            },
+        },
+        {
+            type: 'input',
+            name: 'lName',
+            message: 'Enter managers last name:',
+            validate: lName => 
+            {
+                if ((lName.length === 0) && (lName === "NaN"))
+                {
+                    return 'You must enter a valid last name.';
+                }
+                return true;
+            },
+        },
+        {
+            type: 'input',
+            name: 'empNum',
+            message: 'Enter managers employee number:',
+            validate: empNum => 
+            {
+                if ((empNum < 0) || (isNaN(empNum) === true))
+                {
+                    return 'You must enter a numeric employee number.';
+                }
+                return true;
+            },
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'Enter managers email address:',
+            validate: email => 
+            {
+                if (!validEmail(email))
+                {
+                    return 'You must enter a properly formatted email address.';
+                }
+                return true;
+            },
+        },
+        {
+            type: 'input',
+            name: 'officeNum',
+            message: 'Enter managers office number:',
+            validate: officeNum => 
+            {
+                if ((officeNum.length === 0) || (officeNum === "NaN"))
+                {
+                    return 'You must enter a valid github account name.';
+                }
+                return true;
+            },
+        },
+    ]) 
+    .then(answers => {
+        const arrInput = 
+        {
+            fName: answers.fName,
+            lName: answers.lName,
+            empNum: answers.empNum,
+            email: answers.email,
+            officeNum: answers.officeNum
+        };
+        managerArr.push(arrInput)
+        addTeamMember();
+    })
+}
 
 function addTeamMember ()
 {
@@ -94,9 +180,9 @@ function addEngineerDetails ()
             type: 'input',
             name: 'email',
             message: 'Enter team members email address:',
-            validate: engEmail => 
+            validate: email => 
             {
-                if (!validEmail(engEmail))
+                if (!validEmail(email))
                 {
                     return 'You must enter a properly formatted email address.';
                 }
@@ -232,6 +318,22 @@ function buildHTML()
     let bodyHTML = "<div id='title'>My Team</div>";
     let i = 0;
     bodyHTML += "<div id=container>"
+    for(let emp of managerArr){
+        //Container
+        bodyHTML += `<div id='employeeNum${i}'>`;
+            //Header - Name & Role
+            bodyHTML += "<div class='teamHeader'>";
+                bodyHTML += `<div class='name'>${emp.fName} ${emp.lName}</div>`;
+                bodyHTML += "<div class='manager'>Manager</div>";
+            bodyHTML += "</div>";
+            bodyHTML += "<div class='teamBody'>";
+                bodyHTML += `<div class='id'>ID: ${emp.empNum}</div>`;
+                bodyHTML += `<div class='email'>Email: ${emp.email}</div>`;
+                bodyHTML += `<div class='github'>Github: ${emp.acctName}</div>`;
+            bodyHTML += "</div>";
+        bodyHTML += "</div>";
+    };
+
     for(let emp of engineerArr){
         //Container
         bodyHTML += `<div id='employeeNum${i}'>`;
@@ -243,7 +345,7 @@ function buildHTML()
             bodyHTML += "<div class='teamBody'>";
                 bodyHTML += `<div class='id'>ID: ${emp.empNum}</div>`;
                 bodyHTML += `<div class='email'>Email: ${emp.email}</div>`;
-                bodyHTML += `<div class='github'>Github: ${emp.acctName}</div>`;
+                bodyHTML += `<div class='officeNum'>Office Number: ${emp.officeNum}</div>`;
             bodyHTML += "</div>";
         bodyHTML += "</div>";
     };
