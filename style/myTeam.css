@@ -6,13 +6,39 @@ body
 #container
 {
     display:flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding-top: 50px;
 }
 
-#title
+#titleContainer
 {
-    height: 250px;
+    height: 125px;
+    width: 100%;
     background-color: rgb(232, 71, 86);
-    color: whitesmoke;
+    color: white;
     font-size: 48px;
-    align-content: center;
+    text-align: center;
+    padding-top: 75px;
 }
+  
+  .teamBody {
+    background: whitesmoke;
+    color: black;
+    width: 300px;
+    padding: 20px;
+    overflow: auto;
+    text-align: left;
+  }
+
+  .teamHeader
+  { 
+    background:rgb(0, 119, 247);
+    color: white;
+    font-size: 24px;
+    width: 300px;
+    padding: 20px;
+    overflow: auto;
+    text-align: left;
+  }

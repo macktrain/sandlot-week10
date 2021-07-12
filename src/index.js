@@ -317,10 +317,10 @@ function buildHTML()
     //loop through object
     let i = 0;
     let bodyHTML = "<div id='titleContainer'><div id='title'>My Team</div></div>";
-    bodyHTML += "<div id=container>";
+    bodyHTML += "<div id='container'>";
     for(let emp of managerArr){
         //Container
-        bodyHTML += `<div id='employeeNum${i}'>`;
+        bodyHTML += `<div class='employee'>`;
             //Header - Name & Role
             bodyHTML += "<div class='teamHeader'>";
                 bodyHTML += `<div class='name'>${emp.fName} ${emp.lName}</div>`;
@@ -328,7 +328,7 @@ function buildHTML()
             bodyHTML += "</div>";
             bodyHTML += "<div class='teamBody'>";
                 bodyHTML += `<div class='id'>ID: ${emp.empNum}</div>`;
-                bodyHTML += `<div class='email'>Email: ${emp.email}</div>`;
+                bodyHTML += `<div class='email'>Email: <a href='mailto:${emp.email}'>${emp.email}</a></div>`;
                 bodyHTML += `<div class='office'>Office number: ${emp.officeNum}</div>`;
             bodyHTML += "</div>";
         bodyHTML += "</div>";
@@ -336,7 +336,7 @@ function buildHTML()
 
     for(let emp of engineerArr){
         //Container
-        bodyHTML += `<div id='employeeNum${i}'>`;
+        bodyHTML += `<div class='employee'>`;
             //Header - Name & Role
             bodyHTML += "<div class='teamHeader'>";
                 bodyHTML += `<div class='name'>${emp.fName} ${emp.lName}</div>`;
@@ -344,7 +344,7 @@ function buildHTML()
             bodyHTML += "</div>";
             bodyHTML += "<div class='teamBody'>";
                 bodyHTML += `<div class='id'>ID: ${emp.empNum}</div>`;
-                bodyHTML += `<div class='email'>Email: ${emp.email}</div>`;
+                bodyHTML += `<div class='email'>Email: <a href='mailto:${emp.email}'>${emp.email}</a></div>`;
                 bodyHTML += `<div class='github'>GitHub: ${emp.acctName}</div>`;
             bodyHTML += "</div>";
         bodyHTML += "</div>";
@@ -352,7 +352,7 @@ function buildHTML()
 
     for(let emp of internArr){
         //Container
-        bodyHTML += `<div id='internNum${i}'>`;
+        bodyHTML += `<div class='employee'>`;
             //Header - Name & Role
             bodyHTML += "<div class='teamHeader'>";
                 bodyHTML += `<div class='name'>${emp.fName} ${emp.lName}</div>`;
@@ -360,7 +360,7 @@ function buildHTML()
             bodyHTML += "</div>";
             bodyHTML += "<div class='teamBody'>";
                 bodyHTML += `<div class='id'>ID: ${emp.empNum}</div>`;
-                bodyHTML += `<div class='email'>Email: ${emp.email}</div>`;
+                bodyHTML += `<div class='email'>Email: <a href='mailto:${emp.email}'>${emp.email}</a></div>`;
                 bodyHTML += `<div class='school'>School: ${emp.school}</div>`;
             bodyHTML += "</div>";
         bodyHTML += "</div>";
