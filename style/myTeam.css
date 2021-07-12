@@ -1,0 +1,18 @@
+body 
+{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#container
+{
+    display:flex;
+}
+
+#title
+{
+    height: 250px;
+    background-color: rgb(232, 71, 86);
+    color: whitesmoke;
+    font-size: 48px;
+    align-content: center;
+}
