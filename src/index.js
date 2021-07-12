@@ -315,9 +315,9 @@ function buildHTML()
 {
     //Must run 'npm install --save create-html'
     //loop through object
-    let bodyHTML = "<div id='title'>My Team</div>";
     let i = 0;
-    bodyHTML += "<div id=container>"
+    let bodyHTML = "<div id='titleContainer'><div id='title'>My Team</div></div>";
+    bodyHTML += "<div id=container>";
     for(let emp of managerArr){
         //Container
         bodyHTML += `<div id='employeeNum${i}'>`;
@@ -329,7 +329,7 @@ function buildHTML()
             bodyHTML += "<div class='teamBody'>";
                 bodyHTML += `<div class='id'>ID: ${emp.empNum}</div>`;
                 bodyHTML += `<div class='email'>Email: ${emp.email}</div>`;
-                bodyHTML += `<div class='github'>Github: ${emp.acctName}</div>`;
+                bodyHTML += `<div class='office'>Office number: ${emp.officeNum}</div>`;
             bodyHTML += "</div>";
         bodyHTML += "</div>";
     };
@@ -345,7 +345,7 @@ function buildHTML()
             bodyHTML += "<div class='teamBody'>";
                 bodyHTML += `<div class='id'>ID: ${emp.empNum}</div>`;
                 bodyHTML += `<div class='email'>Email: ${emp.email}</div>`;
-                bodyHTML += `<div class='officeNum'>Office Number: ${emp.officeNum}</div>`;
+                bodyHTML += `<div class='github'>GitHub: ${emp.acctName}</div>`;
             bodyHTML += "</div>";
         bodyHTML += "</div>";
     };
