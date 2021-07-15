@@ -27,6 +27,10 @@ Steps to initialize and prep the application (bash):
 
 (bash) node index.js
 
+## Testing Application
+
+(bash) npm test
+
 ## Instructional video
 
 https://macktrain.github.io/sandlot-week10/instruction.mp4
